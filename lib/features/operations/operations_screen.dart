@@ -1,30 +1,13 @@
 import 'package:airport_operations/app/colors.dart';
+import 'package:airport_operations/domain/model/kpi_card_data.dart';
+import 'package:airport_operations/features/app_scaffold.dart';
 import 'package:airport_operations/features/graphics/compare_trends_card.dart';
 import 'package:airport_operations/features/graphics/trend_overview_card.dart';
 import 'package:airport_operations/features/operations/operational_condition_banner.dart';
 import 'package:airport_operations/features/operations/operations_hero_section.dart';
 import 'package:airport_operations/features/operations/operations_kpi_grid_section.dart';
-import 'package:airport_operations/features/widgets/bottom_nav_index_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../widgets/airport_top_bar.dart';
-
-// ---------------------------------------------------------------------------
-// Simple Riverpod provider for bottom nav index.
-// In a real app you'd drive navigation with GoRouter and a router notifier.
-// ---------------------------------------------------------------------------
-// final bottomNavIndexProvider = StateProvider<int>((ref) => 0);
-
-class BottomNavaIndexNotifier extends Notifier<int> {
-  @override
-  int build() => 0;
-
-  void set(int value) => state = value;
-}
-
-final bottomNavIndexProvider = NotifierProvider<BottomNavaIndexNotifier, int>(
-  BottomNavaIndexNotifier.new,
-);
 
 /// Operations screen — composes all section widgets.
 class OperationsScreen extends ConsumerWidget {
@@ -64,24 +47,7 @@ class OperationsScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final navIndex = ref.watch(bottomNavIndexProvider);
-
-    return Scaffold(
-      backgroundColor: AppColors.background,
-      extendBodyBehindAppBar: true,
-      appBar: const AirportTopBar(),
-      bottomNavigationBar: AirportBottomNavBar(
-        currentIndex: navIndex,
-        onTap: (i) {
-          ref.read(bottomNavIndexProvider.notifier).state = i;
-          // TODO: navigate with GoRouter, e.g.:
-          // switch (i) {
-          //   case 0: context.go('/operations'); break;
-          //   case 1: context.go('/energy'); break;
-          //   case 2: context.go('/alerts'); break;
-          // }
-        },
-      ),
+    return AppScaffold(
       body: Stack(
         children: [
           // Background decorative blobs

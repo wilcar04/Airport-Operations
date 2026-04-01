@@ -106,7 +106,7 @@ class _CompareTrendsCardState extends State<CompareTrendsCard> {
                                   ? AppColors.textCyan
                                   : AppColors.textSecondary,
                           fontSize: 10,
-                          fontWeight: FontWeight.w100,
+                          fontWeight: FontWeight.w400,
                           letterSpacing: -0.25,
                           height: 1.5,
                         ),
@@ -226,7 +226,7 @@ class _LegendItem extends StatelessWidget {
           style: const TextStyle(
             color: AppColors.textSecondary,
             fontSize: 9,
-            fontWeight: FontWeight.w100,
+            fontWeight: FontWeight.w200,
             letterSpacing: 0.9,
             height: 1.5,
           ),

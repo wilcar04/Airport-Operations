@@ -25,4 +25,7 @@ class AppColors {
   static const Color borderCyanMed = Color(0x663ADFFA); // 40% opacity
   static const Color borderGreen = Color(0x3369F6B8); // 20% opacity
   static const Color borderWhiteFaint = Color(0x0DFFFFFF);
+
+  static const Color critical = Color(0xFFFC4563);
+  static const Color warning = Color(0xFFFF8B6F);
 }

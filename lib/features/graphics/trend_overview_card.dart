@@ -139,7 +139,7 @@ class _SelectorChips extends StatelessWidget {
                           ? const Color(0xFF004B56)
                           : AppColors.textSecondary,
                   fontSize: 12,
-                  fontWeight: FontWeight.w100,
+                  fontWeight: FontWeight.w300,
                   letterSpacing: 0.6,
                   height: 1.33,
                 ),

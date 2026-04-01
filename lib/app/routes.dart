@@ -5,11 +5,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 
 final router = GoRouter(
-  initialLocation: '/operation',
+  initialLocation: '/operations',
   routes: [
     GoRoute(
-      path: '/operation',
-      name: 'operation',
+      path: '/operations',
+      name: 'operations',
       builder: (BuildContext context, GoRouterState state) {
         return OperationsScreen();
       },
