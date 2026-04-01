@@ -6,6 +6,7 @@ import 'package:airport_operations/features/app_scaffold.dart';
 import 'package:airport_operations/features/energy/energy_correlation_card.dart';
 import 'package:airport_operations/features/energy/energy_load_distribution.dart';
 import 'package:airport_operations/features/energy/energy_trend_card.dart';
+import 'package:airport_operations/features/widgets/hero_header_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 // Shared nav provider
@@ -117,8 +118,11 @@ class EnergyScreen extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Hero header — reused, different title/subtitle/badge
-            const _EnergyHeroHeader(),
+            const HeroHeaderSection(
+              title: 'Energy & Infrastructure',
+              subtitle: 'OPERATIONS MONITORING SECTOR',
+              badges: [HeroBadge(label: 'EFFICIENT', color: AppColors.green)],
+            ),
             const SizedBox(height: 24),
 
             // 2×2 KPI grid — three standard cards + one custom efficiency card
@@ -213,82 +217,6 @@ class EnergyScreen extends ConsumerWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-// ── Energy-specific Hero Header ───────────────────────────────────────────────
-// Reuses the same visual pattern as HeroHeaderSection but with different copy.
-// Rather than modifying the shared widget we compose a local version here so
-// the Operations screen is unaffected.
-
-class _EnergyHeroHeader extends StatelessWidget {
-  const _EnergyHeroHeader();
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(
-            'Energy & Infrastructure',
-            style: TextStyle(
-              color: AppColors.textPrimary,
-              fontSize: 30,
-              fontWeight: FontWeight.w700,
-              letterSpacing: -0.75,
-              height: 1.2,
-            ),
-          ),
-          const SizedBox(height: 4),
-          const Text(
-            'OPERATIONS MONITORING SECTOR',
-            style: TextStyle(
-              color: AppColors.textSecondary,
-              fontSize: 12,
-              fontWeight: FontWeight.w400,
-              letterSpacing: 1.8,
-              height: 1.33,
-            ),
-          ),
-          const SizedBox(height: 16),
-          // Status badge — "EFFICIENT"
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 17, vertical: 9),
-            decoration: BoxDecoration(
-              color: const Color(0x1A006C49),
-              borderRadius: BorderRadius.circular(9999),
-              border: Border.all(color: AppColors.borderGreen, width: 1),
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Container(
-                  width: 8,
-                  height: 8,
-                  decoration: const BoxDecoration(
-                    color: AppColors.green,
-                    shape: BoxShape.circle,
-                  ),
-                ),
-                const SizedBox(width: 12),
-                const Text(
-                  'EFFICIENT',
-                  style: TextStyle(
-                    color: AppColors.textGreen,
-                    fontSize: 10,
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: 1.0,
-                    height: 1.5,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
       ),
     );
   }
